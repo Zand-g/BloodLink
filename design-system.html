@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Design system | BloodLink</title>
+
+<style>.sw{display:grid;grid-template-columns:repeat(2,1fr);
+    gap:var(--s-3)}.sw div{min-height:96px;padding:var(--s-3);border:2px solid var(--ink);
+    border-radius:var(--r-chip);font-size:var(--t-sm);font-weight:700}.row{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center}.spec{margin:var(--s-2) 0}@media(min-width:600px)
+    {.sw{grid-template-columns:repeat(4,1fr)}}
+    </style></head><body>
+
+<header class="top">
+    <div class="top__bar">
+        <a class="brand" href="index.html">
+            <span class="brand__drop"></span>BloodLink</a>
+            <span class="net" data-state="online">Online</span>
+        </div>
+    </header>
+
+<main class="wrap">
+    <div class="head">
+        <div>
+            <h1 class="hero">Design system</h1>
+            <p class="lede">Strong contrast, big type. Blood red is for blood and for the one action that matters.</p>
+        </div>
+    </div>
+<h2 class="h2">Color</h2>
+<div class="sw">
+<div style="background:#0F1B33;color:#fff">Ink #0F1B33<br>Text, borders, header</div>
+<div style="background:#D7102E;color:#fff">Blood #D7102E<br>Blood type, primary action</div>
+<div style="background:#F3F5F9">Paper #F3F5F9<br>Page background</div>
+<div style="background:#fff">Card #FFFFFF<br>Surfaces</div>
+<div style="background:#D6F2E4;color:#0B6B45">Synced #0B6B45</div>
+<div style="background:#FFE49A;color:#6B4600">Waiting #6B4600</div>
+<div style="background:#fff;color:#49536D">Ink 2 #49536D<br>Secondary text</div>
+<div style="background:#D3D9E6">Line #D3D9E6</div>
+</div>
+
+<h2 class="h2">Type: Archivo (one variable font, local)</h2>
+<p class="spec" style="font:900 var(--t-xl)/1.1 var(--font);font-stretch:108%">Headings: weight 900, width 108%</p>
+<p class="spec" style="font:900 2.75rem/1 var(--font);font-stretch:70%">O+ AB−  Blood type: weight 900, width 70%</p>
+<p class="spec">Body: weight 400, 16px, line height 1.5. Small text is 14px and never lighter than Ink 2.</p>
+<h2 class="h2">Controls</h2>
+<div class="row">
+    <button class="btn btn--primary">Log donation</button>
+    <button class="btn">Cancel</button>
+    <button class="btn btn--danger btn--sm">Delete</button>
+    <span class="badge badge--ok">Synced</span>
+    <span class="badge badge--wait">Waiting to send</span>
+    <span class="badge badge--critical">Critical</span>
+    <span class="badge badge--routine">Routine</span>
+</div>
+
+<h2 class="h2">Record card</h2>
+<div class="list">
+    <article class="rec">
+        <div class="rec__type">
+            <span class="glyph">O+</span>
+            <span class="rec__units">1 unit</span>
+        </div>
+        <div class="rec__body">
+            <h3>Donor name</h3>
+            <p>Blood bank</p>
+            <p>Drive or walk-in</p>
+            <div class="rec__foot">
+                <span class="badge badge--ok">Synced</span>
+            </div>
+        </div>
+    </article>
+
+<article class="rec rec--wait">
+    <div class="rec__type">
+        <span class="glyph">O−</span>
+        <span class="rec__units">2 units</span>
+    </div>
+    <div class="rec__body">
+        <h3>Saved offline</h3>
+        <p>Dashed border and an Ink block mean it has not reached the server.</p>
+        <div class="rec__foot"><span class="badge badge--wait">Waiting to send</span>
+        </div>
+    </div>
+</article>
+</div>
+<h2 class="h2">Rules</h2>
+<p class="lede">Tap targets are at least 40px. Status is always text plus color. Focus rings are 4px. Radii: 10px controls, 20px cards, full pill for buttons and badges. Motion only for loading and the coverage meter.</p>
+</main></body></html>

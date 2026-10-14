@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+     <title>Donations | BloodLink</title></head><body>
+
+<header class="top">
+    <div class="top__bar">
+        <a class="brand" href="index.html">
+            <span class="brand__drop"></span>BloodLink</a>
+<nav class="tabs" aria-label="Main">
+    <a href="index.html" aria-current="page">Donations</a>
+    <a href="bank.html">Blood bank</a></nav>
+
+<span class="net" data-state="online" role="status">Online</span>
+</div>
+</header>
+
+<main class="wrap">
+<div class="head"><div>
+    <h1 class="hero">Donations</h1>
+    <p class="lede">Every unit collected, and where it was given.</p>
+</div>
+
+<a class="btn btn--primary fab" href="donation-form.html">Log donation</a>
+
+</div>
+<div class="search">
+    <label class="sr" for="q">Search by donor, blood bank or drive</label>
+    <input id="q" type="search" placeholder="Search donor, bank or drive" autocomplete="off">
+</div>
+
+<div class="types" id="types" role="group" aria-label="Filter by blood type">
+
+</div>
+<div class="bar">
+    <p id="count" role="status">Loading</p>
+<label class="sort">
+    <span>Sort by</span>
+    <select id="sort">
+        <option value="donation_date:desc">Newest first</option>
+        <option value="donation_date:asc">Oldest first</option>
+        <option value="units:desc">Most units</option>
+        <option value="donor_name:asc">Donor name, A to Z</option>
+        <option value="blood_type:asc">Blood type</option>
+    </select>
+</label></div>
+
+<section id="list" class="list" aria-live="polite"></section>
+</main><script src="js/app.js"></script><script src="js/donations.js"></script></body></html>
