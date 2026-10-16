@@ -1,0 +1,30 @@
+{
+  "items": [
+    {
+      "screening": {
+        "client_uuid": "b7e1c0a2-5d3f-4a6b-8c9d-0e1f2a3b4c01",
+        "donor_id": 5,
+        "bank_id": 1,
+        "drive_id": null,
+        "weight_kg": 58,
+        "hemoglobin_g_l": 130,
+        "bp_systolic": 115,
+        "bp_diastolic": 75,
+        "temperature_c": 36.6,
+        "result": "eligible",
+        "screened_at": "2026-10-15T13:40:00+08:00"
+      },
+      "donation": {
+        "client_uuid": "b7e1c0a2-5d3f-4a6b-8c9d-0e1f2a3b4c02",
+        "request_id": null,
+        "volume_ml": 450,
+        "status": "pending_test",
+        "remarks": "API test",
+        "latitude": 16.4123,
+        "longitude": 120.5960,
+        "gps_accuracy_m": 10,
+        "collected_at": "2026-10-15T14:00:00+08:00"
+      }
+    }
+  ]
+}
