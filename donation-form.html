@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Log donation | Bilateral</title>
+</head>
+<body>
+<header class="top">
+    <div class="top__bar">
+        <a class="brand" href="index.html"><span class="brand__drop"></span>Bilateral</a>
+        <nav class="tabs" aria-label="Main">
+            <a href="index.html" aria-current="page">Donations</a>
+            <a href="bank.html">Blood bank</a>
+        </nav>
+        <span class="net" data-state="online" role="status">Online</span>
+    </div>
+</header>
+<main class="wrap">
+    <div class="head">
+        <div>
+            <h1 class="hero" id="page-title">Log donation</h1>
+            <p class="lede" id="page-lede">Record screening and collection details.</p>
+        </div>
+        <a class="btn" href="index.html">Cancel</a>
+    </div>
+
+    <div id="form-message" class="form-message" role="alert" hidden></div>
+    <form id="donation-form" class="form-card" hidden>
+        <section id="screening-section">
+            <h2 class="h2">Screening</h2>
+            <p class="form-help">Record an eligible screening for this collected donation. Leave unmeasured readings blank.</p>
+            <div class="form-grid">
+                <label class="form-field form-field--wide">Donor
+                    <select id="donor-id" required></select>
+                </label>
+                <label class="form-field">Blood bank
+                    <select id="bank-id" required></select>
+                </label>
+                <label class="form-field">Drive <span class="form-help">(optional)</span>
+                    <select id="drive-id"></select>
+                </label>
+                <label class="form-field">Weight (kg)
+                    <input id="weight" type="number" min="20" max="300" step="0.01">
+                </label>
+                <label class="form-field">Hemoglobin (g/L)
+                    <input id="hemoglobin" type="number" min="50" max="250" step="1">
+                </label>
+                <label class="form-field">Systolic blood pressure
+                    <input id="bp-systolic" type="number" min="50" max="300" step="1">
+                </label>
+                <label class="form-field">Diastolic blood pressure
+                    <input id="bp-diastolic" type="number" min="30" max="200" step="1">
+                </label>
+                <label class="form-field">Temperature (°C)
+                    <input id="temperature" type="number" min="30" max="45" step="0.1">
+                </label>
+                <label class="form-field form-field--wide">Screened at (Manila time)
+                    <input id="screened-at" type="datetime-local" required>
+                </label>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="h2">Collection</h2>
+            <div id="record-details" class="form-details" hidden></div>
+            <div class="form-grid">
+                <label class="form-field">Volume (mL)
+                    <input id="volume" type="number" min="100" max="600" step="1" value="450" required>
+                </label>
+                <label class="form-field">Status
+                    <select id="status" required>
+                        <option value="pending_test">Pending test</option>
+                        <option value="cleared">Cleared</option>
+                        <option value="discarded">Discarded</option>
+                    </select>
+                </label>
+                <label class="form-field form-field--wide">Blood request <span class="form-help">(optional)</span>
+                    <select id="request-id"></select>
+                </label>
+                <label class="form-field form-field--wide">Remarks <span class="form-help">(optional)</span>
+                    <textarea id="remarks" rows="3" maxlength="255"></textarea>
+                </label>
+                <label class="form-field form-field--wide">Collected at (Manila time)
+                    <input id="collected-at" type="datetime-local" required>
+                </label>
+            </div>
+        </section>
+
+        <details class="form-optional">
+            <summary>Optional location</summary>
+            <p class="form-help">Enter both coordinates or leave both blank.</p>
+            <div class="form-grid">
+                <label class="form-field">Latitude
+                    <input id="latitude" type="number" min="-90" max="90" step="0.000001">
+                </label>
+                <label class="form-field">Longitude
+                    <input id="longitude" type="number" min="-180" max="180" step="0.000001">
+                </label>
+                <label class="form-field">GPS accuracy (m)
+                    <input id="gps-accuracy" type="number" min="0" max="100000" step="0.01">
+                </label>
+            </div>
+        </details>
+
+        <div class="form-actions">
+            <a class="btn" href="index.html">Cancel</a>
+            <button id="save-button" class="btn btn--primary" type="submit">Save donation</button>
+        </div>
+    </form>
+</main>
+<script src="js/donation-form.js"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@
   try{
     const [don,reqs]=await Promise.all([getDonations(),getRequests()]);
     const stock=Object.fromEntries(TYPES.map(t=>[t,0]));
-    don.forEach(d=>{stock[d.blood_type]+=Number(d.units)});
+    don.forEach(d=>{if(d.status==="cleared")stock[d.blood_type]+=Number(d.units)});
     const open=reqs.filter(r=>r.status==="open").sort((a,b)=>rank[a.urgency]-rank[b.urgency]||a.needed_by.localeCompare(b.needed_by));
     const short=new Set(open.filter(r=>(stock[r.blood_type]||0)<r.units_needed).map(r=>r.blood_type));
     stockEl.replaceChildren(...TYPES.map(t=>h("div",{class:"tile"+(short.has(t)?" tile--low":"")},

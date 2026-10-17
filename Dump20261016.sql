@@ -99,6 +99,8 @@ CREATE TABLE `blood_banks` (
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_no` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `latitude` decimal(8,6) DEFAULT NULL,
+  `longitude` decimal(9,6) DEFAULT NULL,
   PRIMARY KEY (`bank_id`),
   UNIQUE KEY `uq_blood_banks_name` (`name`),
   KEY `fk_blood_banks_city` (`city_id`),
@@ -112,7 +114,7 @@ CREATE TABLE `blood_banks` (
 
 LOCK TABLES `blood_banks` WRITE;
 /*!40000 ALTER TABLE `blood_banks` DISABLE KEYS */;
-INSERT INTO `blood_banks` VALUES (1,1,'Pines City Blood Center','Upper General Luna Road','074-555-0101','2026-10-16 15:24:19'),(2,2,'Benguet Provincial Blood Station','Km. 5 Halsema Highway','074-555-0202','2026-10-16 15:24:19'),(3,1,'Cordillera Regional Blood Hub','Magsaysay Avenue','074-555-0303','2026-10-16 15:24:19');
+INSERT INTO `blood_banks` VALUES (1,1,'Pines City Blood Center','Upper General Luna Road','074-555-0101','2026-10-16 15:24:19',NULL,NULL),(2,2,'Benguet Provincial Blood Station','Km. 5 Halsema Highway','074-555-0202','2026-10-16 15:24:19',NULL,NULL),(3,1,'Cordillera Regional Blood Hub','Magsaysay Avenue','074-555-0303','2026-10-16 15:24:19',NULL,NULL);
 /*!40000 ALTER TABLE `blood_banks` ENABLE KEYS */;
 UNLOCK TABLES;
 

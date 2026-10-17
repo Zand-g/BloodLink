@@ -32,7 +32,22 @@
             h("a",{class:"btn btn--sm",href:"donation-form.html?id="+d.donation_id,"aria-label":"Edit donation by "+d.donor_name},"Edit"),
             // F3 listens for this event and shows the delete confirmation
             h("button",{type:"button",class:"btn btn--sm btn--danger","aria-label":"Delete donation by "+d.donor_name,
-              onclick:()=>document.dispatchEvent(new CustomEvent("donation:delete",{detail:d}))},"Delete")))));
+              onclick:()=>removeDonation(d)},"Delete")))));
+  }
+  async function removeDonation(d){
+    if(!confirm(`Delete the donation recorded for ${d.donor_name}?`))return;
+    try{
+      const response=await fetch("api/donation_delete.php",{
+        method:"DELETE",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({donation_id:d.donation_id})
+      });
+      const result=await response.json();
+      if(!response.ok||!result.ok)throw new Error(result.message||"Could not delete donation");
+      load();
+    }catch(error){
+      alert(error.message||"Could not delete donation. Try again.");
+    }
   }
   const skeleton=()=>list.replaceChildren(...Array.from({length:3},()=>h("div",{class:"rec sk","aria-hidden":"true"})));
 

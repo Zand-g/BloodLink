@@ -12,27 +12,13 @@ require_once __DIR__ . '/lib/http.php';
 require_once __DIR__ . '/lib/db.php';
 require_once __DIR__ . '/lib/validate.php';
 
-// 'HH:MM' or 'HH:MM:SS' -> 'HH:MM:SS' (null if missing or invalid)
-function parse_slot_time(array $src, string $key, array &$errors): ?string
-{
-    $v = $src[$key] ?? null;
-    if ($v === null || $v === '') {
-        return null;
-    }
-    if (!is_string($v) || !preg_match('/^([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/', $v, $m)) {
-        $errors[] = "$key must be a time (HH:MM)";
-        return null;
-    }
-    return sprintf('%s:%s:%s', $m[1], $m[2], $m[3] ?? '00');
-}
-
 require_method('POST');
 $in = read_json_body();
 
 $errors = [];
 $driveId = f_int($in, 'drive_id', $errors, true, 1);
 $donorId = f_int($in, 'donor_id', $errors, true, 1);
-$slot    = parse_slot_time($in, 'slot_time', $errors);
+$slot    = f_time($in, 'slot_time', $errors);
 if ($errors) {
     json_out(['ok' => false, 'message' => implode('; ', $errors)], 422);
 }

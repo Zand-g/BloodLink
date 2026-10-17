@@ -42,10 +42,13 @@ function fetch_one(mysqli $db, string $sql, string $types, ...$params): ?array
 // The suggested ALTER may or may not have been run yet, so check first.
 function bank_has_coords(mysqli $db): bool
 {
-    $r = $db->query("SHOW COLUMNS FROM blood_banks LIKE 'latitude'");   // fixed text, no user input
-    $has = $r->num_rows > 0;
-    $r->free();
-    return $has;
+    $lat = $db->query("SHOW COLUMNS FROM blood_banks LIKE 'latitude'");   // fixed text, no user input
+    $hasLat = $lat->num_rows > 0;
+    $lat->free();
+    $lng = $db->query("SHOW COLUMNS FROM blood_banks LIKE 'longitude'");
+    $hasLng = $lng->num_rows > 0;
+    $lng->free();
+    return $hasLat && $hasLng;
 }
 
 require_method('POST');

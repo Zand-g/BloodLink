@@ -111,6 +111,21 @@ function f_date(array $src, string $key, array &$errors, bool $required = false)
     return $v;
 }
 
+// 'HH:MM' or 'HH:MM:SS' -> 'HH:MM:SS'
+function f_time(array $src, string $key, array &$errors, bool $required = false): ?string
+{
+    $v = $src[$key] ?? null;
+    if ($v === null || $v === '') {
+        if ($required) $errors[] = "$key is required";
+        return null;
+    }
+    if (!is_string($v) || !preg_match('/^([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/', $v, $m)) {
+        $errors[] = "$key must be a time (HH:MM or HH:MM:SS)";
+        return null;
+    }
+    return sprintf('%s:%s:%s', $m[1], $m[2], $m[3] ?? '00');
+}
+
 // Accepts '2026-10-15 14:00:00', '2026-10-15T14:00:00' or ISO with an offset/Z.
 // Always returns Manila time as 'Y-m-d H:i:s'. A time with no offset is read as Manila time.
 function f_datetime(array $src, string $key, array &$errors, bool $required = true, bool $noFuture = true): ?string

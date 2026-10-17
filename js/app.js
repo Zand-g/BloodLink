@@ -1,6 +1,6 @@
-/* Shared helpers + data layer. Flip USE_MOCK to false once B3's API is live. */
+/* Shared helpers + data layer. */
 window.BL=(()=>{
-  const USE_MOCK=true, API="api/";
+  const USE_MOCK=false, API="api/";
   const TYPES=["A+","A-","B+","B-","AB+","AB-","O+","O-"];
   const fmtType=t=>t.replace("-","\u2212");
   const fmtDate=d=>new Date(d+"T00:00:00").toLocaleDateString("en-PH",{month:"short",day:"numeric",year:"numeric"});
@@ -57,7 +57,7 @@ window.BL=(()=>{
     const r=await fetch(API+file+"?"+new URLSearchParams(params));
     if(!r.ok)throw new Error("HTTP "+r.status);
     const j=await r.json();
-    if(!j.ok)throw new Error(j.error||"Request failed");
+    if(!j.ok)throw new Error(j.message||j.error||"Request failed");
     return j.data;
   }
   async function getDonations({q="",type="",sort="donation_date:desc"}={}){
